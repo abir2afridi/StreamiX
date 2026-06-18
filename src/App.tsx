@@ -4,10 +4,14 @@ import Sidebar from './components/layout/Sidebar';
 import HomeView from './components/views/HomeView';
 import ChannelsView from './components/views/ChannelsView';
 import ChannelPlayerView from './components/views/ChannelPlayerView';
+import SearchView from './components/views/SearchView';
+import CategoriesView from './components/views/CategoriesView';
+import EPGView from './components/views/EPGView';
 import FavoritesView from './components/views/FavoritesView';
 import HistoryView from './components/views/HistoryView';
 import SettingsView from './components/views/SettingsView';
 import AdminView from './components/views/AdminView';
+import ValidateView from './components/views/ValidateView';
 import { Tv, Play, Monitor, ListCollapse, Radio, ChevronRight, Zap, Sun, Moon } from 'lucide-react';
 import { Channel } from './types';
 import { ChannelService } from './lib/services/ChannelService';
@@ -145,6 +149,14 @@ export default function App() {
         return <SettingsView onNavigate={handleNavigate} />;
       case 'admin':
         return <AdminView />;
+      case 'validate':
+        return <ValidateView onNavigate={handleNavigate} />;
+      case 'search':
+        return <SearchView onNavigate={handleNavigate} />;
+      case 'categories':
+        return <CategoriesView onNavigate={handleNavigate} />;
+      case 'epg':
+        return <EPGView onNavigate={handleNavigate} />;
       default:
         return <HomeView onNavigate={handleNavigate} />;
     }
@@ -251,7 +263,8 @@ export default function App() {
             setTvMode={setTvMode}
             lightTheme={lightTheme}
             toggleTheme={toggleTheme}
-            viewTitle={parsed.path === 'channels' && !parsed.id ? 'CHANNEL DIRECTORY' : parsed.id ? 'CHANNEL PLAYER' : parsed.path.toUpperCase()}
+            viewTitle={parsed.path === 'channels' && !parsed.id ? 'CHANNEL DIRECTORY' : parsed.id ? 'CHANNEL PLAYER' : parsed.path === 'validate' ? 'STREAM VALIDATOR' : parsed.path === 'search' ? 'SEARCH' : parsed.path === 'categories' ? 'BROWSE' : parsed.path === 'epg' ? 'TV GUIDE' : parsed.path.toUpperCase()}
+            backTarget={parsed.path !== 'home' ? (parsed.id ? '#/' + parsed.path : '#/') : undefined}
           />
           <div className="flex flex-1 overflow-hidden">
             <Sidebar
@@ -262,21 +275,6 @@ export default function App() {
               <main className="flex-1 flex flex-col overflow-y-auto">
                 {renderActiveView()}
               </main>
-
-              <footer className="bg-carbon/90 border-t border-white/10 py-1.5 px-6">
-            <div className="max-w-[1600px] mx-auto flex items-center justify-between">
-              <p className="text-[8px] text-white/20 font-mono uppercase tracking-[0.2em]">
-                STREAMIX v2.4 • GPL-3.0
-              </p>
-              <div className="flex gap-3 font-mono text-[8px] text-white/20 uppercase tracking-[0.2em]">
-                <button onClick={() => handleNavigate('#/')} className="hover:text-neon transition cursor-pointer">HOME</button>
-                <span className="text-white/10">/</span>
-                <button onClick={() => handleNavigate('#/settings')} className="hover:text-neon transition cursor-pointer">CONFIG</button>
-                <span className="text-white/10">/</span>
-                <button onClick={() => handleNavigate('#/admin')} className="hover:text-neon transition cursor-pointer">ADMIN</button>
-              </div>
-            </div>
-          </footer>
           </div>
           </div>
         </>

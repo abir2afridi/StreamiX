@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Play, Heart, Flame, ShieldAlert, Award, Radio, Tv, Star, Users, Info } from 'lucide-react';
+import {
+  Play, Heart, Flame, ShieldAlert, Award, Radio, Tv, Star, Users, Info,
+  Trophy, Newspaper, Film, Music, Baby, Church, Briefcase, BookOpen, Globe, Sparkles
+} from 'lucide-react';
 import { Channel, Category, HistoryEntry } from '../../types';
 import { ChannelService } from '../../lib/services/ChannelService';
 import { LocalStorageFavoriteRepository, LocalStorageHistoryRepository } from '../../lib/repositories/localStorage';
@@ -23,6 +26,17 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
   const [historyList, setHistoryList] = useState<Channel[]>([]);
   const [favoritesList, setFavoritesList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const [news, setNews] = useState<Channel[]>([]);
+  const [entertainment, setEntertainment] = useState<Channel[]>([]);
+  const [kids, setKids] = useState<Channel[]>([]);
+  const [music, setMusic] = useState<Channel[]>([]);
+  const [worldcup, setWorldcup] = useState<Channel[]>([]);
+  const [documentary, setDocumentary] = useState<Channel[]>([]);
+  const [business, setBusiness] = useState<Channel[]>([]);
+  const [religious, setReligious] = useState<Channel[]>([]);
+  const [general, setGeneral] = useState<Channel[]>([]);
+  const [lifestyle, setLifestyle] = useState<Channel[]>([]);
 
   const [activeFeaturedIndex, setActiveFeaturedIndex] = useState(0);
 
@@ -50,6 +64,27 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
 
         const mvRes = await channelService.getChannels({ category: 'movies', limit: 30 });
         setMovies(mvRes.channels);
+
+        const newsRes = await channelService.getChannels({ category: 'news', limit: 30 });
+        setNews(newsRes.channels);
+        const entRes = await channelService.getChannels({ category: 'entertainment', limit: 30 });
+        setEntertainment(entRes.channels);
+        const kidsRes = await channelService.getChannels({ category: 'kids', limit: 30 });
+        setKids(kidsRes.channels);
+        const musicRes = await channelService.getChannels({ category: 'music', limit: 30 });
+        setMusic(musicRes.channels);
+        const wcRes = await channelService.getChannels({ category: 'worldcup', limit: 30 });
+        setWorldcup(wcRes.channels);
+        const docRes = await channelService.getChannels({ category: 'documentary', limit: 30 });
+        setDocumentary(docRes.channels);
+        const bizRes = await channelService.getChannels({ category: 'business', limit: 30 });
+        setBusiness(bizRes.channels);
+        const relRes = await channelService.getChannels({ category: 'religious', limit: 30 });
+        setReligious(relRes.channels);
+        const genRes = await channelService.getChannels({ category: 'general', limit: 30 });
+        setGeneral(genRes.channels);
+        const lifeRes = await channelService.getChannels({ category: 'lifestyle', limit: 30 });
+        setLifestyle(lifeRes.channels);
 
         const rawHistory = await historyRepo.getHistory();
         const allLocal = await channelService.getChannels({ limit: 100 });
@@ -164,6 +199,17 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
         </div>
       )}
 
+      {trending.length > 0 && (
+        <SectionRow
+          title="TRENDING NOW"
+          icon={<Flame className="w-4 h-4 text-neon" />}
+          channels={trending}
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
       {categories.length > 0 && (
         <div className="space-y-4">
           <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
@@ -210,86 +256,202 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
         </div>
       )}
 
+      {worldcup.length > 0 && (
+        <SectionRow
+          title="FIFA WORLD CUP 2026"
+          icon={<Trophy className="w-4 h-4 text-neon" />}
+          channels={worldcup}
+          viewAllCategory="worldcup"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
       {bangladesh.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex justify-between items-center bg-carbon/50 py-1.5 border border-white/5">
-            <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
-              <Star className="w-4 h-4 text-neon" /> BANGLADESH
-            </h3>
-            <button
-              onClick={() => onNavigate('#/channels?category=bangladesh')}
-              className="text-[9px] font-mono font-black text-neon hover:text-white transition tracking-[0.2em] uppercase p-1 cursor-pointer"
-            >
-              VIEW ALL ({bangladesh.length})
-            </button>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {bangladesh.slice(0, 12).map((channel) => (
-              <ChannelCard
-                key={channel.id}
-                channel={channel}
-                isFav={favoritesList.includes(channel.id)}
-                onFavToggle={handleFavoriteToggle}
-                onPlay={() => onNavigate(`#/channels/${channel.slug}`)}
-              />
-            ))}
-          </div>
-        </div>
+        <SectionRow
+          title="BANGLADESH"
+          icon={<Star className="w-4 h-4 text-neon" />}
+          channels={bangladesh}
+          viewAllCategory="bangladesh"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
       )}
 
       {sports.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex justify-between items-center bg-carbon/50 py-1.5 border border-white/5">
-            <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
-              <Award className="w-4 h-4 text-neon" /> SPORTS
-            </h3>
-            <button
-              onClick={() => onNavigate('#/channels?category=sports')}
-              className="text-[9px] font-mono font-black text-neon hover:text-white transition tracking-[0.2em] uppercase p-1 cursor-pointer"
-            >
-              VIEW ALL ({sports.length})
-            </button>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {sports.slice(0, 12).map((channel) => (
-              <ChannelCard
-                key={channel.id}
-                channel={channel}
-                isFav={favoritesList.includes(channel.id)}
-                onFavToggle={handleFavoriteToggle}
-                onPlay={() => onNavigate(`#/channels/${channel.slug}`)}
-              />
-            ))}
-          </div>
-        </div>
+        <SectionRow
+          title="SPORTS"
+          icon={<Award className="w-4 h-4 text-neon" />}
+          channels={sports}
+          viewAllCategory="sports"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {entertainment.length > 0 && (
+        <SectionRow
+          title="ENTERTAINMENT"
+          icon={<Tv className="w-4 h-4 text-neon" />}
+          channels={entertainment}
+          viewAllCategory="entertainment"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {news.length > 0 && (
+        <SectionRow
+          title="NEWS"
+          icon={<Newspaper className="w-4 h-4 text-neon" />}
+          channels={news}
+          viewAllCategory="news"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
       )}
 
       {movies.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex justify-between items-center bg-carbon/50 py-1.5 border border-white/5">
-            <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
-              <Star className="w-4 h-4 text-neon" /> MOVIES
-            </h3>
-            <button
-              onClick={() => onNavigate('#/channels?category=movies')}
-              className="text-[9px] font-mono font-black text-neon hover:text-white transition tracking-[0.2em] uppercase p-1 cursor-pointer"
-            >
-              VIEW ALL ({movies.length})
-            </button>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {movies.slice(0, 12).map((channel) => (
-              <ChannelCard
-                key={channel.id}
-                channel={channel}
-                isFav={favoritesList.includes(channel.id)}
-                onFavToggle={handleFavoriteToggle}
-                onPlay={() => onNavigate(`#/channels/${channel.slug}`)}
-              />
-            ))}
-          </div>
-        </div>
+        <SectionRow
+          title="MOVIES"
+          icon={<Film className="w-4 h-4 text-neon" />}
+          channels={movies}
+          viewAllCategory="movies"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
       )}
+
+      {music.length > 0 && (
+        <SectionRow
+          title="MUSIC"
+          icon={<Music className="w-4 h-4 text-neon" />}
+          channels={music}
+          viewAllCategory="music"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {kids.length > 0 && (
+        <SectionRow
+          title="KIDS"
+          icon={<Baby className="w-4 h-4 text-neon" />}
+          channels={kids}
+          viewAllCategory="kids"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {religious.length > 0 && (
+        <SectionRow
+          title="RELIGIOUS"
+          icon={<Church className="w-4 h-4 text-neon" />}
+          channels={religious}
+          viewAllCategory="religious"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {business.length > 0 && (
+        <SectionRow
+          title="BUSINESS"
+          icon={<Briefcase className="w-4 h-4 text-neon" />}
+          channels={business}
+          viewAllCategory="business"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {documentary.length > 0 && (
+        <SectionRow
+          title="DOCUMENTARY"
+          icon={<BookOpen className="w-4 h-4 text-neon" />}
+          channels={documentary}
+          viewAllCategory="documentary"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {general.length > 0 && (
+        <SectionRow
+          title="GENERAL"
+          icon={<Globe className="w-4 h-4 text-neon" />}
+          channels={general}
+          viewAllCategory="general"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+
+      {lifestyle.length > 0 && (
+        <SectionRow
+          title="LIFESTYLE"
+          icon={<Sparkles className="w-4 h-4 text-neon" />}
+          channels={lifestyle}
+          viewAllCategory="lifestyle"
+          onNavigate={onNavigate}
+          favoritesList={favoritesList}
+          onFavToggle={handleFavoriteToggle}
+        />
+      )}
+    </div>
+  );
+}
+
+interface SectionRowProps {
+  title: string;
+  icon: React.ReactNode;
+  channels: Channel[];
+  viewAllCategory?: string;
+  onNavigate: (hash: string) => void;
+  favoritesList: string[];
+  onFavToggle: (id: string, e: React.MouseEvent) => void;
+}
+
+function SectionRow({ title, icon, channels, viewAllCategory, onNavigate, favoritesList, onFavToggle }: SectionRowProps) {
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center bg-carbon/50 py-1.5 border border-white/5">
+        <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
+          {icon} {title}
+        </h3>
+        {viewAllCategory && (
+          <button
+            onClick={() => onNavigate(`#/channels?category=${viewAllCategory}`)}
+            className="text-[9px] font-mono font-black text-neon hover:text-white transition tracking-[0.2em] uppercase p-1 cursor-pointer"
+          >
+            VIEW ALL ({channels.length})
+          </button>
+        )}
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {channels.slice(0, 12).map((channel) => (
+          <ChannelCard
+            key={channel.id}
+            channel={channel}
+            isFav={favoritesList.includes(channel.id)}
+            onFavToggle={onFavToggle}
+            onPlay={() => onNavigate(`#/channels/${channel.slug}`)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

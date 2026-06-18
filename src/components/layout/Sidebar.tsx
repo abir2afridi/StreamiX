@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Grid, Heart, History, Settings, ShieldAlert } from 'lucide-react';
+import { Home, Grid, Heart, History, Settings, ShieldAlert, Search, List, Calendar, Link2 } from 'lucide-react';
 import { LocalStorageFavoriteRepository } from '../../lib/repositories/localStorage';
 
 interface SidebarProps {
@@ -29,6 +29,10 @@ export default function Sidebar({ currentView, onNavigate }: SidebarProps) {
   const navItems = [
     { id: 'home', label: 'HOME', icon: Home, hash: '#/' },
     { id: 'channels', label: 'CHANNELS', icon: Grid, hash: '#/channels' },
+    { id: 'validate', label: 'VALIDATE', icon: Link2, hash: '#/validate' },
+    { id: 'search', label: 'SEARCH', icon: Search, hash: '#/search' },
+    { id: 'categories', label: 'CATEGORIES', icon: List, hash: '#/categories' },
+    { id: 'epg', label: 'EPG', icon: Calendar, hash: '#/epg' },
     { id: 'favorites', label: 'FAV', icon: Heart, hash: '#/favorites', badge: favCount },
     { id: 'history', label: 'HISTORY', icon: History, hash: '#/history' },
     { id: 'settings', label: 'SETTINGS', icon: Settings, hash: '#/settings' },

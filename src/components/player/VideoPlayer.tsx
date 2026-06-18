@@ -65,6 +65,9 @@ export default function VideoPlayer({
   const [levels, setLevels] = useState<string[]>([]);
   const [currentLevel, setCurrentLevel] = useState<number>(-1);
   const [showSettings, setShowSettings] = useState(false);
+  const [audioTracks, setAudioTracks] = useState<string[]>([]);
+  const [currentAudioTrack, setCurrentAudioTrack] = useState<number>(-1);
+  const [showAudioMenu, setShowAudioMenu] = useState(false);
 
   const activeStream = streams[activeStreamIndex] || streams[0];
 
@@ -140,9 +143,17 @@ export default function VideoPlayer({
           (lvl) => `${lvl.height ? lvl.height + 'p' : 'AUTO'}`
         );
         setLevels(['AUTO', ...resolvedLevels]);
+        if (data.audioTracks?.length) {
+          setAudioTracks(data.audioTracks.map((t: any) => t.name || `Track ${t.id}`));
+          setCurrentAudioTrack(hls.audioTrack);
+        }
         if (autoplay) {
           video.play().catch(() => setPlaying(false));
         }
+      });
+
+      hls.on(Hls.Events.AUDIO_TRACK_SWITCHED, (_, data) => {
+        setCurrentAudioTrack(data.id);
       });
 
       hls.on(Hls.Events.LEVEL_SWITCHED, (_, data) => {
@@ -202,8 +213,22 @@ export default function VideoPlayer({
           fps: Math.round(videoQuality.fps || 30),
           droppedFrames: videoQuality.droppedVideoFrames || 0,
         }));
+        localStorage.setItem(`streamix-resume-${channelName}`, JSON.stringify({
+          time: video.currentTime,
+          updatedAt: Date.now(),
+        }));
       }
     }, 2000);
+
+    const savedResume = localStorage.getItem(`streamix-resume-${channelName}`);
+    if (savedResume) {
+      try {
+        const parsed = JSON.parse(savedResume);
+        if (parsed.time > 3 && Date.now() - parsed.updatedAt < 86400000) {
+          video.currentTime = parsed.time;
+        }
+      } catch {}
+    }
 
     return () => {
       clearTimeout(bufferingTimeout);
@@ -367,6 +392,14 @@ export default function VideoPlayer({
     }
   };
 
+  const handleAudioTrack = (idx: number) => {
+    setCurrentAudioTrack(idx);
+    setShowAudioMenu(false);
+    if (hlsRef.current) {
+      hlsRef.current.audioTrack = idx;
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -525,7 +558,39 @@ export default function VideoPlayer({
             <div className="flex items-center gap-1">
               <div className="relative">
                 <button
-                  onClick={() => setShowSettings(!showSettings)}
+                  onClick={() => { setShowSettings(false); setShowAudioMenu(!showAudioMenu); }}
+                  title="AUDIO"
+                  className="p-2 text-white hover:bg-white/20 transition"
+                >
+                  <span className="text-[9px] font-black font-mono">AUD</span>
+                </button>
+                {showAudioMenu && audioTracks.length > 0 && (
+                  <div className="absolute bottom-10 right-0 py-1 bg-obsidian/95 border border-white/10 shadow-xl text-[10px] font-mono w-36 z-30">
+                    <div className="px-3 py-1.5 text-[8px] text-white/30 border-b border-white/10 uppercase tracking-[0.3em] font-black">AUDIO TRACK</div>
+                    {audioTracks.map((name, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleAudioTrack(idx)}
+                        className={`w-full text-left px-3 py-1.5 hover:bg-white/10 transition flex items-center justify-between uppercase tracking-widest font-black ${
+                          currentAudioTrack === idx ? 'text-neon' : 'text-white/60'
+                        }`}
+                      >
+                        <span>{name}</span>
+                        {currentAudioTrack === idx && <span className="h-1.5 w-1.5 bg-neon" />}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {showAudioMenu && audioTracks.length === 0 && (
+                  <div className="absolute bottom-10 right-0 py-2 px-3 bg-obsidian/95 border border-white/10 shadow-xl text-[9px] font-mono text-white/50 z-30 whitespace-nowrap">
+                    NO AUDIO TRACKS
+                  </div>
+                )}
+              </div>
+
+              <div className="relative">
+                <button
+                  onClick={() => { setShowAudioMenu(false); setShowSettings(!showSettings); }}
                   title="QUALITY"
                   className="p-2 text-white hover:bg-white/20 transition"
                 >
