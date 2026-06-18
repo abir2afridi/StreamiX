@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Outfit", sans-serif;
+
+  --color-obsidian: #0A0A0A;
+  --color-carbon: #121212;
+  --color-carbon-light: #1a1a1a;
+  --color-neon: #00d4ff;
+  --color-neon-dark: #0099bb;
+  --color-crimson: #ff2040;
+  --color-crimson-dark: #cc1030;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0099bb;
+}
+
+.glass-panel {
+  background: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-heavy {
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-neon {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15), 0 0 40px rgba(0, 212, 255, 0.05);
+}
+
+.glow-crimson {
+  box-shadow: 0 0 20px rgba(255, 32, 64, 0.15), 0 0 40px rgba(255, 32, 64, 0.05);
+}
+
+.card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 8px 30px -10px rgba(0, 212, 255, 0.15);
+}
+
+.brutalist-text {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+}
+
+.terminal-input {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 11px;
+}
+
+.terminal-input:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.08);
+}
+
+.tv-focused {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+  transform: scale(1.04);
+  z-index: 20;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+.light,
+.light .bg-obsidian,
+.light.bg-obsidian { background-color: #f0f0f0 !important; }
+.light .bg-carbon,
+.light.bg-carbon { background-color: #ffffff !important; }
+.light .bg-carbon\/80 { background-color: rgba(255, 255, 255, 0.9) !important; }
+.light .bg-carbon\/90 { background-color: rgba(255, 255, 255, 0.95) !important; }
+.light .bg-carbon\/50 { background-color: rgba(255, 255, 255, 0.7) !important; }
+
+.light .text-white,
+.light.text-white { color: #0a0a0a !important; }
+.light .text-white\/40 { color: rgba(0, 0, 0, 0.55) !important; }
+.light .text-white\/30 { color: rgba(0, 0, 0, 0.45) !important; }
+.light .text-white\/20 { color: rgba(0, 0, 0, 0.35) !important; }
+.light .text-white\/60 { color: rgba(0, 0, 0, 0.7) !important; }
+.light .placeholder-white\/30::placeholder { color: rgba(0, 0, 0, 0.5) !important; }
+.light .placeholder-white\/20::placeholder { color: rgba(0, 0, 0, 0.4) !important; }
+
+.light .border-white\/10 { border-color: rgba(0, 0, 0, 0.12) !important; }
+.light .border-white\/5 { border-color: rgba(0, 0, 0, 0.06) !important; }
+.light .border-white\/20 { border-color: rgba(0, 0, 0, 0.2) !important; }
+.light .border-b-white\/10 { border-bottom-color: rgba(0, 0, 0, 0.12) !important; }
+.light .border-t-white\/10 { border-top-color: rgba(0, 0, 0, 0.12) !important; }
+
+.light .bg-white\/5 { background-color: rgba(0, 0, 0, 0.05) !important; }
+.light .bg-white\/10 { background-color: rgba(0, 0, 0, 0.08) !important; }
+
+.light .hover\:text-white:hover { color: #0a0a0a !important; }
+.light .hover\:bg-white\/5:hover { background-color: rgba(0, 0, 0, 0.05) !important; }
+.light .hover\:bg-white\/10:hover { background-color: rgba(0, 0, 0, 0.08) !important; }
+.light .hover\:border-white\/30:hover { border-color: rgba(0, 0, 0, 0.25) !important; }
+
+.light .player-overlay .text-white,
+.light.player-overlay .text-white,
+.player-overlay .text-white { color: #ffffff !important; }
+
+.light .text-neon { color: #00b8e6 !important; }
+.light .bg-neon { background-color: #00b8e6 !important; }
+.light .bg-neon\/10 { background-color: rgba(0, 184, 230, 0.1) !important; }
+.light .bg-neon\/5 { background-color: rgba(0, 184, 230, 0.05) !important; }
+.light .border-neon\/20 { border-color: rgba(0, 184, 230, 0.2) !important; }
+.light .border-neon\/30 { border-color: rgba(0, 184, 230, 0.3) !important; }
+.light .text-crimson { color: #e01838 !important; }
+.light .bg-crimson { background-color: #e01838 !important; }
+.light .border-crimson\/30 { border-color: rgba(224, 24, 56, 0.3) !important; }
+.light .bg-crimson\/5 { background-color: rgba(224, 24, 56, 0.05) !important; }
+.light .bg-crimson\/10 { background-color: rgba(224, 24, 56, 0.1) !important; }
+
+.light .card-hover:hover {
+  box-shadow: 0 8px 30px -10px rgba(0, 184, 230, 0.15);
+}
+
+.light .terminal-input {
+  background: rgba(255, 255, 255, 0.5);
+  color: #0a0a0a;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.light .text-\[7px\] { font-size: 9px !important; }
+.light .text-\[8px\] { font-size: 10px !important; }
+.light .text-\[9px\] { font-size: 11px !important; }
+.light .text-\[10px\] { font-size: 12px !important; }
+.light .text-\[11px\] { font-size: 13px !important; }

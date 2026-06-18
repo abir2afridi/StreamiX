@@ -1,0 +1,110 @@
+[
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Match Highlight Reels",
+    "description": "Experience the best of Match Highlight Reels on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-17T18:00:00.000Z",
+    "endTime": "2026-06-17T20:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Live Football 2026",
+    "description": "Experience the best of Live Football 2026 on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-17T20:00:00.000Z",
+    "endTime": "2026-06-17T22:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Cricket Classics",
+    "description": "Experience the best of Cricket Classics on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-17T22:00:00.000Z",
+    "endTime": "2026-06-18T00:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "T Sports Panel",
+    "description": "Experience the best of T Sports Panel on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T00:00:00.000Z",
+    "endTime": "2026-06-18T02:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Sports Desk Daily",
+    "description": "Experience the best of Sports Desk Daily on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T02:00:00.000Z",
+    "endTime": "2026-06-18T04:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "World Cup Preview",
+    "description": "Experience the best of World Cup Preview on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T04:00:00.000Z",
+    "endTime": "2026-06-18T06:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "The Grand Arena",
+    "description": "Experience the best of The Grand Arena on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T06:00:00.000Z",
+    "endTime": "2026-06-18T08:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Match Highlight Reels",
+    "description": "Experience the best of Match Highlight Reels on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T08:00:00.000Z",
+    "endTime": "2026-06-18T10:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Live Football 2026",
+    "description": "Experience the best of Live Football 2026 on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T10:00:00.000Z",
+    "endTime": "2026-06-18T12:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Cricket Classics",
+    "description": "Experience the best of Cricket Classics on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T12:00:00.000Z",
+    "endTime": "2026-06-18T14:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "T Sports Panel",
+    "description": "Experience the best of T Sports Panel on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T14:00:00.000Z",
+    "endTime": "2026-06-18T16:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": false
+  },
+  {
+    "channelId": "fifa-2026-t-sports",
+    "title": "Sports Desk Daily",
+    "description": "Experience the best of Sports Desk Daily on our Live TV platform. Full coverage, live commentary, and high-fidelity video streams.",
+    "startTime": "2026-06-18T16:00:00.000Z",
+    "endTime": "2026-06-18T18:00:00.000Z",
+    "category": "SPORTS",
+    "isLive": true
+  }
+]

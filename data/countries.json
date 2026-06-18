@@ -1,0 +1,6 @@
+[
+  { "id": "bangladesh", "name": "Bangladesh", "code": "BD", "flag": "🇧🇩" },
+  { "id": "india", "name": "India", "code": "IN", "flag": "🇮🇳" },
+  { "id": "sports", "name": "Sports Global", "code": "SG", "flag": "⚽" },
+  { "id": "international", "name": "International", "code": "ALL", "flag": "🌐" }
+]

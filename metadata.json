@@ -1,0 +1,6 @@
+{
+  "name": "Live TV Platform",
+  "description": "A feature-rich, highly-optimized database-free Live TV streaming platform supporting public sources, XMLTV EPG parsing, custom video player, search, categories, and an admin sync dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

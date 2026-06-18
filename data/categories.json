@@ -1,0 +1,16 @@
+[
+  { "id": "bangladesh", "name": "Bangladesh", "icon": "🇧🇩", "count": 25 },
+  { "id": "sports", "name": "Sports", "icon": "⚽", "count": 15 },
+  { "id": "worldcup", "name": "Football World Cup 2026", "icon": "🏆", "count": 8 },
+  { "id": "entertainment", "name": "Indian Entertainment", "icon": "🎭", "count": 12 },
+  { "id": "movies", "name": "Movies", "icon": "🎬", "count": 12 },
+  { "id": "news", "name": "India News", "icon": "📰", "count": 15 },
+  { "id": "music", "name": "Music", "icon": "🎵", "count": 18 },
+  { "id": "kids", "name": "Kids", "icon": "👶", "count": 8 },
+  { "id": "religious", "name": "Religious", "icon": "🕌", "count": 18 },
+  { "id": "scientific", "name": "Scientific / Documentary", "icon": "📖", "count": 4 },
+  { "id": "business", "name": "Business", "icon": "💼", "count": 5 },
+  { "id": "documentary", "name": "Documentary", "icon": "📖", "count": 4 },
+  { "id": "general", "name": "General", "icon": "🌐", "count": 8 },
+  { "id": "lifestyle", "name": "Lifestyle", "icon": "✨", "count": 4 }
+]

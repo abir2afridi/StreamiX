@@ -1,0 +1,404 @@
+[
+  {
+    "id": "somoy-tv",
+    "name": "Somoy TV",
+    "slug": "somoy-tv",
+    "logo": "https://iptv-org.github.io/iptv/logos/somoytv.png",
+    "streams": [
+      {
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/index.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "bangladesh",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "news",
+      "live"
+    ],
+    "epgId": "SomoyTV.bd",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "healthScore": 85,
+    "qualityScore": 90,
+    "reliabilityScore": 80,
+    "viewCount": 3701,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "jamuna-tv",
+    "name": "Jamuna TV",
+    "slug": "jamuna-tv",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://tvsen6.aynaott.com/jamunatv/index.m3u8?e=1779283771&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=2592d440f00d65738bd7f6c5158ce486",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1,
+        "tokenRequired": true,
+        "tokenExpiry": 1779283771
+      }
+    ],
+    "category": "bangladesh",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "news",
+      "live",
+      "token"
+    ],
+    "epgId": "JamunaTV.bd",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": true,
+    "healthScore": 45,
+    "qualityScore": 80,
+    "reliabilityScore": 50,
+    "viewCount": 1120,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "rtv",
+    "name": "RTV Live",
+    "slug": "rtv-live",
+    "logo": "https://iptv-org.github.io/iptv/logos/rtv.png",
+    "streams": [
+      {
+        "url": "https://tvsen6.aynaott.com/rtv/tracks-v1a1/mono.ts.m3u8",
+        "format": "mpegts",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "bangladesh",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "entertainment",
+      "live"
+    ],
+    "epgId": "RTV.bd",
+    "isHD": false,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": false,
+    "healthScore": 75,
+    "qualityScore": 70,
+    "reliabilityScore": 75,
+    "viewCount": 540,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "btv-national",
+    "name": "BTV National",
+    "slug": "btv-national",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/btv-gov/output/index.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "bangladesh",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "state",
+      "general"
+    ],
+    "epgId": "BTV.bd",
+    "isHD": false,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": true,
+    "isTrending": false,
+    "healthScore": 85,
+    "qualityScore": 75,
+    "reliabilityScore": 85,
+    "viewCount": 1820,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "t-sports-hd",
+    "name": "T Sports HD",
+    "slug": "t-sports-hd",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://tvsen7.aynaott.com/tsports-hd/index.m3u8?e=1779283784&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=3b4c5a2cfa872fa7f91ffbfb4aa0f658",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1,
+        "tokenRequired": true,
+        "tokenExpiry": 1779283784
+      },
+      {
+        "url": "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8",
+        "format": "mpegts",
+        "quality": "720p",
+        "priority": 2
+      }
+    ],
+    "category": "sports",
+    "country": "sports",
+    "language": [
+      "Bengali",
+      "English"
+    ],
+    "tags": [
+      "sports",
+      "cricket",
+      "live"
+    ],
+    "epgId": "TSports.sports",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "healthScore": 90,
+    "qualityScore": 95,
+    "reliabilityScore": 90,
+    "viewCount": 5400,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "fifa-2026-btv",
+    "name": "FIFA 2026 — BTV",
+    "slug": "fifa-2026-btv",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/btv-gov/output/index.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "worldcup",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "worldcup",
+      "sports",
+      "special"
+    ],
+    "epgId": "BTV.worldcup",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "healthScore": 85,
+    "qualityScore": 80,
+    "reliabilityScore": 85,
+    "viewCount": 3200,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "fifa-2026-t-sports",
+    "name": "FIFA 2026 — T Sports",
+    "slug": "fifa-2026-t-sports",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://tvsen7.aynaott.com/tsports-hd/tracks-v1a1/mono.ts.m3u8",
+        "format": "mpegts",
+        "quality": "720p",
+        "priority": 1
+      }
+    ],
+    "category": "worldcup",
+    "country": "sports",
+    "language": [
+      "Bengali",
+      "English"
+    ],
+    "tags": [
+      "worldcup",
+      "sports",
+      "football"
+    ],
+    "epgId": "TSports.worldcup",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": true,
+    "isTrending": true,
+    "healthScore": 90,
+    "qualityScore": 85,
+    "reliabilityScore": 90,
+    "viewCount": 5175,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "news18-bangla",
+    "name": "News18 Bangla",
+    "slug": "news18-bangla",
+    "logo": "https://iptv-org.github.io/iptv/logos/news18bangla.png",
+    "streams": [
+      {
+        "url": "https://n18syndication.akamaized.net/bpk-tv/News18_Bangla_NW18_MOB/output01/master.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "news",
+    "country": "india",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "news",
+      "india"
+    ],
+    "epgId": "News18Bangla.in",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": true,
+    "healthScore": 90,
+    "qualityScore": 90,
+    "reliabilityScore": 95,
+    "viewCount": 980,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "stingray-classic-rock",
+    "name": "Stingray Classic Rock",
+    "slug": "stingray-classic-rock",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://lotus.stingray.com/manifest/ose-101ads-montreal/samsungtvplus/master.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "music",
+    "country": "international",
+    "language": [
+      "English"
+    ],
+    "tags": [
+      "music",
+      "rock",
+      "stingray"
+    ],
+    "epgId": "StingrayClassicRock.us",
+    "isHD": true,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": false,
+    "healthScore": 85,
+    "qualityScore": 85,
+    "reliabilityScore": 90,
+    "viewCount": 350,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "tom-and-jerry-tv",
+    "name": "Tom & Jerry TV",
+    "slug": "tom-and-jerry-tv",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://amg26268-amg26268c14-freelivesports-emea-10267.playouts.now.amagi.tv/ts-us-e2-n2/playlist.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "kids",
+    "country": "international",
+    "language": [
+      "English",
+      "Hindi"
+    ],
+    "tags": [
+      "kids",
+      "cartoons"
+    ],
+    "isHD": false,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": true,
+    "healthScore": 80,
+    "qualityScore": 80,
+    "reliabilityScore": 80,
+    "viewCount": 1600,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  },
+  {
+    "id": "peace-tv-bangla",
+    "name": "Peace TV Bangla",
+    "slug": "peace-tv-bangla",
+    "logo": "",
+    "streams": [
+      {
+        "url": "https://pishow.tv/live_hls/peacetvbangla/index.m3u8",
+        "format": "hls",
+        "quality": "auto",
+        "priority": 1
+      }
+    ],
+    "category": "religious",
+    "country": "bangladesh",
+    "language": [
+      "Bengali"
+    ],
+    "tags": [
+      "religious",
+      "islamic"
+    ],
+    "epgId": "PeaceTVBangla.bd",
+    "isHD": false,
+    "is4K": false,
+    "isLive": true,
+    "isFeatured": false,
+    "isTrending": false,
+    "healthScore": 65,
+    "qualityScore": 65,
+    "reliabilityScore": 65,
+    "viewCount": 420,
+    "lastChecked": "2026-06-18T08:52:13Z",
+    "addedAt": "2026-06-18T00:00:00Z"
+  }
+]

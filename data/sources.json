@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "id": "mahmud-picks",
+      "name": "Mahmud's Pick — Main Collection",
+      "url": "https://raw.githubusercontent.com/mahmudulbisd/iptv-flow-sources/refs/heads/main/mahmud-picks.m3u",
+      "type": "m3u",
+      "enabled": true,
+      "priority": 1,
+      "description": "Personal curated collection — 224+ channels",
+      "lastSynced": "2026-06-18T08:52:13Z",
+      "channelCount": 224
+    },
+    {
+      "id": "world-cup-2026",
+      "name": "FIFA World Cup 2026 — Special",
+      "url": "https://raw.githubusercontent.com/mahmudulbisd/iptv-flow-sources/refs/heads/main/IPTV-Flow-World-Cup.m3u",
+      "type": "m3u",
+      "enabled": true,
+      "priority": 1,
+      "description": "FIFA 2026 dedicated channels",
+      "lastSynced": "2026-06-18T08:52:13Z",
+      "channelCount": 8
+    },
+    {
+      "id": "streampulse",
+      "name": "StreamPulse Collection",
+      "url": "https://raw.githubusercontent.com/mahmudulbisd/iptv-flow-sources/refs/heads/main/streampulse.m3u",
+      "type": "m3u",
+      "enabled": true,
+      "priority": 2,
+      "description": "StreamPulse curated list",
+      "lastSynced": "2026-06-18T08:52:13Z",
+      "channelCount": 42
+    },
+    {
+      "id": "channels-json",
+      "name": "IPTV Flow — JSON Feed",
+      "url": "https://raw.githubusercontent.com/mahmudulbisd/iptv-flow-sources/refs/heads/main/channels.json",
+      "type": "json",
+      "enabled": true,
+      "priority": 1,
+      "description": "JSON format channel data",
+      "lastSynced": "2026-06-18T08:52:13Z",
+      "channelCount": 56
+    }
+  ]
+}
