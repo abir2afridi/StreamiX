@@ -52,6 +52,7 @@ export default function VideoPlayer({
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showStats, setShowStats] = useState(false);
   const [showControls, setShowControls] = useState(false);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [stats, setStats] = useState({
     format: 'HLS',
@@ -73,7 +74,10 @@ export default function VideoPlayer({
 
   useEffect(() => {
     mountedRef.current = true;
-    return () => { mountedRef.current = false; };
+    return () => {
+      mountedRef.current = false;
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -382,6 +386,18 @@ export default function VideoPlayer({
 
   const handleMouseMove = () => {
     setShowControls(true);
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    hideTimerRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 3000);
+  };
+
+  const handleMouseLeave = () => {
+    setShowControls(false);
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
   };
 
   const handleQualityLevel = (idx: number) => {
@@ -404,7 +420,7 @@ export default function VideoPlayer({
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setShowControls(false)}
+      onMouseLeave={handleMouseLeave}
       className={`relative w-full overflow-hidden bg-black transition-all group select-none ${
         theaterMode ? 'aspect-[21/9] max-h-[80vh]' : 'aspect-video border border-white/10'
       }`}
@@ -469,7 +485,7 @@ export default function VideoPlayer({
       )}
 
       <div
-        className={`player-overlay absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-black/40 flex flex-col justify-between p-4 transition-opacity duration-300 z-10 ${
+        className={`player-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-black/20 flex flex-col justify-between p-4 transition-opacity duration-300 z-10 ${
           showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
