@@ -171,8 +171,32 @@
   background: #f0f0f0;
 }
 
-.light .text-\[7px\] { font-size: 9px !important; }
-.light .text-\[8px\] { font-size: 10px !important; }
-.light .text-\[9px\] { font-size: 11px !important; }
-.light .text-\[10px\] { font-size: 12px !important; }
-.light .text-\[11px\] { font-size: 13px !important; }
+.light .text-black\/80 { color: rgba(0, 0, 0, 0.8) !important; }
+.light .text-white\/10 { color: rgba(0, 0, 0, 0.15) !important; }
+.light .text-white\/50 { color: rgba(0, 0, 0, 0.6) !important; }
+
+.light .bg-white\/20 { background-color: rgba(0, 0, 0, 0.15) !important; }
+.light .hover\:bg-white\/20:hover { background-color: rgba(0, 0, 0, 0.15) !important; }
+.light .hover\:bg-white\/30:hover { background-color: rgba(0, 0, 0, 0.22) !important; }
+
+.light .bg-obsidian\/90 { background-color: rgba(240, 240, 240, 0.9) !important; }
+.light .bg-obsidian\/95 { background-color: rgba(240, 240, 240, 0.95) !important; }
+
+.light .bg-black { background-color: #f0f0f0 !important; }
+.light .bg-black\/80 { background-color: rgba(240, 240, 240, 0.8) !important; }
+.light .bg-black\/20 { background-color: rgba(0, 0, 0, 0.12) !important; }
+
+.light .from-obsidian { --tw-gradient-from: #f0f0f0 !important; }
+.light .via-carbon { --tw-gradient-via: #ffffff !important; }
+.light .to-obsidian { --tw-gradient-to: #f0f0f0 !important; }
+.light .from-carbon { --tw-gradient-from: #ffffff !important; }
+.light .via-carbon\/50 { --tw-gradient-via: rgba(255, 255, 255, 0.5) !important; }
+.light .via-obsidian\/80 { --tw-gradient-via: rgba(240, 240, 240, 0.8) !important; }
+.light .from-black { --tw-gradient-from: #e0e0e0 !important; }
+.light .via-black\/10 { --tw-gradient-via: rgba(224, 224, 224, 0.1) !important; }
+.light .to-black { --tw-gradient-to: #e0e0e0 !important; }
+.light .to-black\/40 { --tw-gradient-to: rgba(224, 224, 224, 0.4) !important; }
+
+.light .border-crimson\/20 { border-color: rgba(224, 24, 56, 0.2) !important; }
+
+

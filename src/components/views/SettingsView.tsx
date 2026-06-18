@@ -69,7 +69,7 @@ export default function SettingsView({ onNavigate }: SettingsViewProps) {
   }
 
   return (
-    <div className="space-y-8 pb-20 px-6 max-w-5xl mx-auto">
+    <div className="pt-8 space-y-8 pb-20 px-6 max-w-5xl mx-auto">
       <div className="flex justify-between items-center border-b border-white/10 pb-5">
         <div>
           <h2 className="text-xl font-black font-display uppercase tracking-widest text-white flex items-center gap-2">
@@ -186,7 +186,7 @@ export default function SettingsView({ onNavigate }: SettingsViewProps) {
             </div>
           )}
 
-          <div className="p-5 bg-crimson/5 border border-crimron/20 space-y-2">
+          <div className="p-5 bg-crimson/5 border border-crimson/20 space-y-2">
             <h4 className="text-[10px] font-black text-crimson flex items-center gap-1.5 font-display uppercase tracking-[0.2em]">
               <ShieldAlert className="w-4 h-4" /> RESET
             </h4>

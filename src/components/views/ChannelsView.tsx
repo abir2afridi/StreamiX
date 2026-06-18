@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Search, Grid, List, SlidersHorizontal, Eye, Heart, RefreshCw, Star } from 'lucide-react';
+import { SlidersHorizontal, Eye } from 'lucide-react';
 import { Channel, Category, Country } from '../../types';
 import { ChannelService } from '../../lib/services/ChannelService';
 import { LocalStorageFavoriteRepository } from '../../lib/repositories/localStorage';
@@ -102,32 +102,8 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
   };
 
   return (
-    <div className="space-y-8 pb-20 px-6 max-w-[1600px] mx-auto">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-white/10 pb-5">
-        <div>
-          <h2 className="text-xl font-black font-display uppercase tracking-widest text-white">CHANNEL DIRECTORY</h2>
-          <p className="text-[10px] text-white/30 font-mono uppercase tracking-[0.2em] mt-1">
-            {channels.length} VERIFIED STREAMS
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2 relative w-full md:w-80">
-          <Search className="w-3.5 h-3.5 text-white/30 absolute left-3.5 pointer-events-none" />
-          <input
-            type="text"
-            placeholder="SEARCH..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setPage(1);
-            }}
-            className="w-full pl-10 pr-4 py-2 bg-carbon/50 border border-white/10 text-[11px] text-white placeholder-white/30 font-mono uppercase tracking-widest focus:border-neon/30 focus:shadow-[0_0_12px_rgba(0,212,255,0.08)] transition-all duration-300"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-6">
-        <aside className="w-full lg:w-64 space-y-6 bg-carbon/80 backdrop-blur-xl border border-white/10 p-5 h-fit">
+    <div className="flex-1 flex flex-col lg:flex-row pt-8 px-6 gap-6">
+      <aside className="w-full lg:w-64 shrink-0 space-y-6 bg-carbon/80 backdrop-blur-xl border border-white/10 p-5 h-fit sticky top-0 self-start">
           <div className="flex items-center justify-between">
             <h3 className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
               <SlidersHorizontal className="w-3 h-3 text-neon" /> FILTERS
@@ -237,7 +213,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
           </div>
         </aside>
 
-        <main className="flex-1 space-y-6">
+        <main className="flex-1 overflow-y-auto space-y-6">
           {loading ? (
             <div className="flex flex-col items-center justify-center min-h-[40vh] gap-3">
               <div className="w-8 h-8 border-2 border-neon border-t-transparent animate-spin" />
@@ -296,6 +272,5 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
           )}
         </main>
       </div>
-    </div>
   );
 }

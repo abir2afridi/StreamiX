@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/layout/Header';
+import Sidebar from './components/layout/Sidebar';
 import HomeView from './components/views/HomeView';
 import ChannelsView from './components/views/ChannelsView';
 import ChannelPlayerView from './components/views/ChannelPlayerView';
@@ -7,7 +8,7 @@ import FavoritesView from './components/views/FavoritesView';
 import HistoryView from './components/views/HistoryView';
 import SettingsView from './components/views/SettingsView';
 import AdminView from './components/views/AdminView';
-import { Tv, Play, Monitor, ListCollapse, Radio, ChevronRight, Zap, Shield, Activity, Sun, Moon } from 'lucide-react';
+import { Tv, Play, Monitor, ListCollapse, Radio, ChevronRight, Zap, Sun, Moon } from 'lucide-react';
 import { Channel } from './types';
 import { ChannelService } from './lib/services/ChannelService';
 
@@ -150,10 +151,10 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${lightTheme ? 'light' : ''} bg-obsidian text-white flex flex-col font-sans antialiased selection:bg-neon/30 selection:text-white`}>
+    <div className={`h-screen overflow-hidden ${lightTheme ? 'light' : ''} bg-obsidian text-white flex flex-col font-sans antialiased selection:bg-neon/30 selection:text-white`}>
       
       {tvMode ? (
-        <div className="flex-1 flex flex-col bg-obsidian p-8 space-y-8">
+        <div className="flex-1 flex flex-col bg-obsidian p-8 space-y-8 overflow-y-auto">
           <div className="flex justify-between items-center bg-carbon/80 backdrop-blur-xl border border-white/10 p-5">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-neon/10 border border-neon/30">
@@ -241,22 +242,7 @@ export default function App() {
         </div>
       ) : (
         <>
-          <div className="bg-carbon/90 backdrop-blur-xl border-b border-white/10">
-            <div className="flex items-center justify-center gap-4 py-1.5 px-6 text-[9px] font-mono uppercase tracking-[0.3em]">
-              <span className="flex items-center gap-1.5 text-neon">
-                <Shield className="w-3 h-3" /> AES-256 ENCRYPTION ACTIVE
-              </span>
-              <span className="w-1 h-1 bg-white/20" />
-              <span className="flex items-center gap-1.5 text-white/40">
-                <Activity className="w-3 h-3 text-neon animate-pulse" /> PROTOCOL v2.4
-              </span>
-              <span className="w-1 h-1 bg-white/20" />
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-neon rounded-none animate-pulse" />
-                <span className="text-neon/60">SYSTEM NOMINAL</span>
-              </span>
-            </div>
-          </div>
+
 
           <Header
             currentView={parsed.path}
@@ -265,33 +251,34 @@ export default function App() {
             setTvMode={setTvMode}
             lightTheme={lightTheme}
             toggleTheme={toggleTheme}
+            viewTitle={parsed.path === 'channels' && !parsed.id ? 'CHANNEL DIRECTORY' : parsed.id ? 'CHANNEL PLAYER' : parsed.path.toUpperCase()}
           />
-          <main className="flex-grow pt-8 w-full max-w-[1600px] mx-auto">
-            {renderActiveView()}
-          </main>
-          
-          <footer className="bg-carbon/90 border-t border-white/10 py-9 px-6 mt-16">
-            <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-5">
-              <div className="space-y-1">
-                <h4 className="text-white font-black font-display flex items-center gap-1.5 leading-none text-sm uppercase tracking-widest">
-                  STREAMIX PROTOCOL
-                </h4>
-                <p className="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">ZERO-STATE LIVE TELEVISION INGESTION</p>
-              </div>
+          <div className="flex flex-1 overflow-hidden">
+            <Sidebar
+              currentView={parsed.path}
+              onNavigate={handleNavigate}
+            />
+            <div className="flex-1 flex flex-col overflow-hidden">
+              <main className="flex-1 flex flex-col overflow-y-auto">
+                {renderActiveView()}
+              </main>
 
-              <div className="flex gap-4 font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+              <footer className="bg-carbon/90 border-t border-white/10 py-1.5 px-6">
+            <div className="max-w-[1600px] mx-auto flex items-center justify-between">
+              <p className="text-[8px] text-white/20 font-mono uppercase tracking-[0.2em]">
+                STREAMIX v2.4 • GPL-3.0
+              </p>
+              <div className="flex gap-3 font-mono text-[8px] text-white/20 uppercase tracking-[0.2em]">
                 <button onClick={() => handleNavigate('#/')} className="hover:text-neon transition cursor-pointer">HOME</button>
                 <span className="text-white/10">/</span>
                 <button onClick={() => handleNavigate('#/settings')} className="hover:text-neon transition cursor-pointer">CONFIG</button>
                 <span className="text-white/10">/</span>
                 <button onClick={() => handleNavigate('#/admin')} className="hover:text-neon transition cursor-pointer">ADMIN</button>
               </div>
-
-              <p className="text-[9px] text-white/20 font-mono uppercase tracking-[0.2em]">
-                STREAMIX v2.4 • GPL-3.0
-              </p>
             </div>
           </footer>
+          </div>
+          </div>
         </>
       )}
     </div>

@@ -3,6 +3,7 @@ import { Play, Heart, Flame, ShieldAlert, Award, Radio, Tv, Star, Users, Info } 
 import { Channel, Category, HistoryEntry } from '../../types';
 import { ChannelService } from '../../lib/services/ChannelService';
 import { LocalStorageFavoriteRepository, LocalStorageHistoryRepository } from '../../lib/repositories/localStorage';
+import { getChannelAccent } from '../../lib/utils/channelAccent';
 
 interface HomeViewProps {
   onNavigate: (hash: string) => void;
@@ -91,7 +92,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
   const featuredChannel = featured[activeFeaturedIndex] || bangladesh[0] || sports[0];
 
   return (
-    <div className="space-y-12 pb-20 px-6 max-w-[1600px] mx-auto">
+    <div className="pt-8 space-y-12 pb-20 px-6 max-w-[1600px] mx-auto">
       {featuredChannel && (
         <div className="relative w-full aspect-[22/9] md:aspect-[3/1] overflow-hidden border border-white/10 bg-gradient-to-r from-obsidian via-carbon to-obsidian flex items-center justify-start group">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(0,212,255,0.05),transparent_70%)] z-0" />
@@ -302,31 +303,18 @@ interface CardProps {
 }
 
 export function ChannelCard({ channel, isFav, onFavToggle, onPlay }: CardProps) {
+  const accent = getChannelAccent(channel.name);
   const isHealthy = channel.healthScore >= 75;
-  const healthColor = channel.healthScore >= 80 
-    ? 'bg-neon' 
-    : (channel.healthScore >= 50 ? 'bg-crimson' : 'bg-crimson');
 
   return (
     <div
       onClick={onPlay}
-      className="bg-carbon/80 backdrop-blur-xl border border-white/10 cursor-pointer flex flex-col group aspect-[3/4] card-hover"
+      className="bg-carbon/80 backdrop-blur-xl border border-white/10 cursor-pointer flex flex-col group card-hover overflow-hidden"
     >
-      <div className="relative flex-1 bg-obsidian flex items-center justify-center overflow-hidden">
-        <div className="absolute top-2 left-2 z-10 flex items-center gap-1.5">
-          <span className={`h-1.5 w-1.5 ${healthColor} ${isHealthy ? 'shadow-[0_0_6px_rgba(0,212,255,0.5)]' : ''}`} />
-          <span className="text-[7px] font-black font-mono text-white/40 bg-carbon/90 px-1 py-0.5 uppercase tracking-[0.2em]">
-            {channel.healthScore}%
-          </span>
-        </div>
-
-        <button
-          onClick={(e) => onFavToggle(channel.id, e)}
-          className="absolute top-2 right-2 p-1.5 bg-carbon/90 border border-white/10 text-white/40 hover:text-crimson hover:border-crimson/30 z-10 transition-all cursor-pointer"
-        >
-          <Heart className={`w-3 h-3 ${isFav ? 'fill-crimson text-crimson' : ''}`} />
-        </button>
-
+      <div
+        className="relative w-full aspect-[16/9] flex items-center justify-center overflow-hidden"
+        style={{ backgroundColor: `${accent}12` }}
+      >
         {channel.logo ? (
           <img
             src={channel.logo}
@@ -335,29 +323,58 @@ export function ChannelCard({ channel, isFav, onFavToggle, onPlay }: CardProps) 
             className="h-auto max-h-[60%] w-4/5 object-contain opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
           />
         ) : (
-          <div className="h-12 w-24 flex items-center justify-center bg-neon/5 border border-neon/20 font-display font-black text-neon text-sm tracking-widest">
+          <span
+            className="font-display font-black text-2xl tracking-widest"
+            style={{ color: accent }}
+          >
             {channel.name.slice(0, 3).toUpperCase()}
-          </div>
+          </span>
         )}
-
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/50 to-transparent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <span className="p-3 bg-white text-black">
-            <Play className="w-5 h-5 fill-black" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40">
+          <span className="p-3 text-white" style={{ backgroundColor: accent }}>
+            <Play className="w-5 h-5 fill-white" />
           </span>
         </div>
+        <div
+          className="absolute top-2.5 left-2.5 h-2.5 w-2.5"
+          style={{ backgroundColor: accent, boxShadow: isHealthy ? `0 0 6px ${accent}80` : 'none' }}
+        />
+        <button
+          onClick={(e) => onFavToggle(channel.id, e)}
+          style={{ '--fav-accent': accent } as React.CSSProperties}
+          className="absolute top-2.5 right-2.5 p-1.5 bg-carbon/80 border border-white/10 text-white/30 hover:text-[var(--fav-accent)] hover:border-[var(--fav-accent)] transition cursor-pointer z-10"
+        >
+          <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-crimson text-crimson' : ''}`} />
+        </button>
       </div>
 
-      <div className="p-3 border-t border-white/10 space-y-1.5">
-        <h4 className="text-[10px] font-black uppercase tracking-widest text-white truncate group-hover:text-neon transition duration-300">
-          {channel.name}
-        </h4>
-        <div className="flex items-center justify-between">
-          <span className="text-[8px] font-black font-mono text-white/30 uppercase tracking-[0.2em]">
-            {channel.category}
-          </span>
-          <span className="text-[7px] font-black font-mono text-white/50 px-1 py-0.5 bg-white/5 border border-white/10">
-            {channel.isHD ? '1080P' : '720P'}
-          </span>
+      <div className="p-3.5 border-t border-white/10 flex items-center gap-3">
+        {channel.logo && (
+          <img
+            src={channel.logo}
+            alt={channel.name}
+            referrerPolicy="no-referrer"
+            className="h-9 w-16 object-contain shrink-0 opacity-80"
+          />
+        )}
+        <div className="min-w-0 flex-1">
+          <h4
+            className="text-xs font-black uppercase tracking-widest truncate transition duration-300 text-white"
+            style={{ '--hover-accent': accent } as React.CSSProperties}
+          >
+            <span className="group-hover:text-[var(--hover-accent)]">{channel.name}</span>
+          </h4>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="text-[9px] font-black font-mono text-white/30 uppercase tracking-[0.2em] truncate">
+              {channel.category}
+            </span>
+            <span className="text-[8px] font-black font-mono text-white/40 px-1 bg-white/5 border border-white/10">
+              {channel.isHD ? '1080P' : '720P'}
+            </span>
+            <span className="text-[8px] font-black font-mono text-white/30">
+              {channel.healthScore}%
+            </span>
+          </div>
         </div>
       </div>
     </div>
