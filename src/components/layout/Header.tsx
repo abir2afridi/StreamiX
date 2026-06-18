@@ -46,18 +46,18 @@ export default function Header({ currentView, onNavigate, tvMode, setTvMode, lig
         >
           {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
-        <div className="flex items-center gap-2 cursor-pointer group" onClick={() => onNavigate('#/')}>
-          <div className="p-1.5 bg-neon/10 border border-neon/30 flex items-center justify-center text-neon group-hover:bg-neon/20 transition-all duration-300">
-            <Tv className="w-4 h-4" />
+        <div className="flex items-center gap-1.5 cursor-pointer group" onClick={() => onNavigate('#/')}>
+          <div className="p-1 bg-neon/10 border border-neon/30 flex items-center justify-center text-neon group-hover:bg-neon/20 transition-all duration-300">
+            <Tv className="w-3.5 h-3.5" />
           </div>
           <div>
-            <h1 className="text-xs font-black font-display uppercase tracking-widest text-white flex items-center gap-1.5">
+            <h1 className="text-[10px] sm:text-xs font-black font-display uppercase tracking-widest text-white flex items-center gap-1">
               STREAMIX
-              <span className="px-1 py-0.5 text-[7px] bg-neon/10 text-neon font-black font-mono border border-neon/30">
+              <span className="hidden sm:inline px-1 py-0.5 text-[7px] bg-neon/10 text-neon font-black font-mono border border-neon/30">
                 v2.4
               </span>
             </h1>
-            <p className="text-[7px] text-white/30 font-mono uppercase tracking-[0.2em] leading-none">LIVE TELEVISION PROTOCOL</p>
+            <p className="hidden sm:block text-[7px] text-white/30 font-mono uppercase tracking-[0.2em] leading-none">LIVE TELEVISION PROTOCOL</p>
           </div>
         </div>
 
@@ -73,11 +73,11 @@ export default function Header({ currentView, onNavigate, tvMode, setTvMode, lig
 
         {viewTitle && (
           <>
-            {!backTarget && <span className="w-px h-5 bg-white/10" />}
+            {!backTarget && <span className="hidden sm:inline w-px h-5 bg-white/10" />}
             <div>
-              <h2 className="text-xs font-black font-display uppercase tracking-widest text-white">{viewTitle}</h2>
+              <h2 className="text-[10px] sm:text-xs font-black font-display uppercase tracking-widest text-white">{viewTitle}</h2>
               {viewSubtitle && (
-                <p className="text-[7px] text-white/30 font-mono uppercase tracking-[0.15em] leading-none">{viewSubtitle}</p>
+                <p className="hidden sm:block text-[7px] text-white/30 font-mono uppercase tracking-[0.15em] leading-none">{viewSubtitle}</p>
               )}
             </div>
           </>
@@ -133,7 +133,7 @@ export default function Header({ currentView, onNavigate, tvMode, setTvMode, lig
         <button
           onClick={() => onNavigate('#/settings')}
           title="SETTINGS"
-          className={`p-1.5 border bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30 transition-all duration-300 ${
+          className={`hidden sm:flex p-1.5 border bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30 transition-all duration-300 ${
             currentView === 'settings' ? 'border-neon/30 text-neon' : ''
           }`}
         >
@@ -143,7 +143,7 @@ export default function Header({ currentView, onNavigate, tvMode, setTvMode, lig
         <button
           onClick={() => onNavigate('#/admin')}
           title="ADMIN CONSOLE"
-          className={`p-1.5 border bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30 transition-all duration-300 ${
+          className={`hidden sm:flex p-1.5 border bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30 transition-all duration-300 ${
             currentView === 'admin' ? 'border-crimson/30 text-crimson' : ''
           }`}
         >

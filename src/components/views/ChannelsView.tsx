@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SlidersHorizontal, Eye } from 'lucide-react';
+import { SlidersHorizontal, Eye, Search, ChevronUp } from 'lucide-react';
 import { Channel, Category, Country } from '../../types';
 import { ChannelService } from '../../lib/services/ChannelService';
 import { LocalStorageFavoriteRepository } from '../../lib/repositories/localStorage';
@@ -25,6 +25,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
   const [activeCountry, setActiveCountry] = useState('all');
   const [onlyHD, setOnlyHD] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -102,18 +103,47 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
   };
 
   return (
-    <div className="flex-1 flex flex-col lg:flex-row pt-8 px-3 md:px-6 gap-4 md:gap-6">
-      <aside className="w-full lg:w-64 shrink-0 space-y-6 bg-carbon/80 backdrop-blur-xl border border-white/10 p-5 h-fit sticky top-0 self-start">
+    <div className="flex-1 flex flex-col lg:flex-row pt-5 px-3 md:px-6 gap-3 md:gap-6">
+      <div className="lg:hidden flex items-center gap-2 w-full">
+        <div className="relative flex-1">
+          <Search className="w-3 h-3 text-white/30 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <input
+            type="text"
+            placeholder="SEARCH CHANNELS..."
+            value={searchQuery}
+            onChange={(e) => { setSearchQuery(e.target.value); setPage(1); }}
+            className="w-full pl-8 pr-3 py-2 bg-carbon/50 border border-white/10 text-[11px] text-white placeholder-white/30 font-mono uppercase tracking-widest focus:border-neon/30 focus:shadow-[0_0_12px_rgba(0,212,255,0.08)] transition-all duration-300"
+          />
+        </div>
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className={`p-2 border transition cursor-pointer ${
+            showFilters ? 'bg-neon text-black border-neon' : 'bg-carbon/50 border-white/10 text-white/40'
+          }`}
+        >
+          <SlidersHorizontal className="w-4 h-4" />
+        </button>
+      </div>
+
+      <aside className={`w-full lg:w-64 shrink-0 space-y-6 bg-carbon/80 backdrop-blur-xl border border-white/10 p-5 ${showFilters ? 'block' : 'hidden'} lg:block h-fit lg:sticky lg:top-0 lg:self-start`}>
           <div className="flex items-center justify-between">
             <h3 className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
               <SlidersHorizontal className="w-3 h-3 text-neon" /> FILTERS
             </h3>
-            <button
-              onClick={handleClearFilters}
-              className="text-[9px] font-mono font-black text-white/30 hover:text-neon transition uppercase tracking-[0.2em] cursor-pointer"
-            >
-              RESET
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowFilters(false)}
+                className="lg:hidden text-white/30 hover:text-white transition cursor-pointer"
+              >
+                <ChevronUp className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleClearFilters}
+                className="text-[9px] font-mono font-black text-white/30 hover:text-neon transition uppercase tracking-[0.2em] cursor-pointer"
+              >
+                RESET
+              </button>
+            </div>
           </div>
 
           <hr className="border-white/10" />
@@ -125,6 +155,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
                 onClick={() => {
                   setActiveCategory('all');
                   setPage(1);
+                  setShowFilters(false);
                 }}
                 className={`w-full text-left px-3 py-2 text-[11px] font-black uppercase tracking-widest flex items-center justify-between transition-all duration-250 cursor-pointer ${
                   activeCategory === 'all' 
@@ -140,6 +171,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
                   onClick={() => {
                     setActiveCategory(cat.id);
                     setPage(1);
+                    setShowFilters(false);
                   }}
                   className={`w-full text-left px-3 py-2 text-[11px] font-black uppercase tracking-widest flex items-center justify-between transition-all duration-250 cursor-pointer ${
                     activeCategory === cat.id 
@@ -165,6 +197,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
                 onClick={() => {
                   setActiveCountry('all');
                   setPage(1);
+                  setShowFilters(false);
                 }}
                 className={`w-full text-left px-3 py-2 text-[11px] font-black uppercase tracking-widest flex items-center gap-2.5 transition-all duration-255 cursor-pointer ${
                   activeCountry === 'all' 
@@ -180,6 +213,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
                   onClick={() => {
                     setActiveCountry(c.id);
                     setPage(1);
+                    setShowFilters(false);
                   }}
                   className={`w-full text-left px-3 py-2 text-[11px] font-black uppercase tracking-widest flex items-center gap-2.5 transition-all duration-255 cursor-pointer ${
                     activeCountry === c.id 

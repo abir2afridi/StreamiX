@@ -172,8 +172,8 @@ export default function ChannelPlayerView({ slug, onNavigate }: ChannelPlayerVie
                 )}
               </div>
               <div>
-                <h2 className="text-xl font-black font-display uppercase tracking-widest text-white">{channel.name}</h2>
-                <div className="flex items-wrap gap-2 mt-1.5">
+                <h2 className="text-base md:text-xl font-black font-display uppercase tracking-widest text-white">{channel.name}</h2>
+                <div className="flex flex-wrap items-center gap-1.5 mt-1.5">
                   <span className="px-2 py-0.5 bg-white/10 text-white/60 font-mono text-[9px] font-black uppercase tracking-[0.2em]">
                     {channel.category}
                   </span>
@@ -191,29 +191,29 @@ export default function ChannelPlayerView({ slug, onNavigate }: ChannelPlayerVie
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
                 onClick={handleFavoriteToggle}
-                className={`flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest border transition ${
+                className={`p-2 border transition cursor-pointer ${
                   isFavorite
                     ? 'bg-crimson/10 border-crimson/30 text-crimson'
                     : 'bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30'
-                } cursor-pointer`}
+                }`}
+                title={isFavorite ? 'REMOVE FROM FAVORITES' : 'ADD TO FAVORITES'}
               >
                 <Heart className={`w-4 h-4 ${isFavorite ? 'fill-crimson text-crimson' : ''}`} />
-                {isFavorite ? 'SAVED' : 'FAVORITE'}
               </button>
 
               <button
                 onClick={handleWebShare}
-                className={`flex items-center gap-2 px-4 py-2 text-[10px] font-black uppercase tracking-widest border transition ${
+                className={`p-2 border transition cursor-pointer ${
                   shared
                     ? 'bg-neon/10 border-neon/30 text-neon'
                     : 'bg-carbon/50 border-white/10 text-white/40 hover:text-white hover:border-white/30'
-                } cursor-pointer`}
+                }`}
+                title={shared ? 'COPIED' : 'SHARE'}
               >
                 {shared ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
-                {shared ? 'COPIED' : 'SHARE'}
               </button>
 
               <button
@@ -248,7 +248,7 @@ export default function ChannelPlayerView({ slug, onNavigate }: ChannelPlayerVie
               <div className="space-y-4">
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-start gap-4">
-                    <h4 className="text-base font-black font-display uppercase tracking-widest text-white">
+                    <h4 className="text-sm md:text-base font-black font-display uppercase tracking-widest text-white">
                       {currentProgram.title}
                     </h4>
                     <span className="px-1.5 py-0.5 bg-crimson text-white font-mono text-[8px] font-black animate-pulse">
@@ -321,7 +321,7 @@ export default function ChannelPlayerView({ slug, onNavigate }: ChannelPlayerVie
                         )}
                       </div>
                       <div>
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-white group-hover:text-neon transition truncate w-36">
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-white group-hover:text-neon transition truncate w-28 md:w-36">
                           {chan.name}
                         </h4>
                         <span className="text-[7px] font-mono text-white/30 uppercase tracking-[0.2em]">
