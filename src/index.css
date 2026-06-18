@@ -199,4 +199,13 @@
 
 .light .border-crimson\/20 { border-color: rgba(224, 24, 56, 0.2) !important; }
 
+@supports (height: 100dvh) {
+  .h-screen-fix { height: 100dvh; }
+}
+
+@media (max-width: 1023px) {
+  .sidebar-content { display: none; }
+  .sidebar-open .sidebar-content { display: flex; }
+}
+
 

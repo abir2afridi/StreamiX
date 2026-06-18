@@ -127,7 +127,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
   const featuredChannel = featured[activeFeaturedIndex] || bangladesh[0] || sports[0];
 
   return (
-    <div className="pt-8 space-y-12 pb-20 px-6 max-w-[1600px] mx-auto">
+    <div className="pt-8 space-y-12 pb-20 px-3 md:px-6 max-w-[1600px] mx-auto">
       {featuredChannel && (
         <div className="relative w-full aspect-[22/9] md:aspect-[3/1] overflow-hidden border border-white/10 bg-gradient-to-r from-obsidian via-carbon to-obsidian flex items-center justify-start group">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(0,212,255,0.05),transparent_70%)] z-0" />

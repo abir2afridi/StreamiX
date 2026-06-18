@@ -69,7 +69,7 @@ export default function SettingsView({ onNavigate }: SettingsViewProps) {
   }
 
   return (
-    <div className="pt-8 space-y-8 pb-20 px-6 max-w-5xl mx-auto">
+    <div className="pt-8 space-y-8 pb-20 px-3 md:px-6 max-w-5xl mx-auto">
       <div className="flex justify-between items-center border-b border-white/10 pb-5">
         <div>
           <h2 className="text-xl font-black font-display uppercase tracking-widest text-white flex items-center gap-2">

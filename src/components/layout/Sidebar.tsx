@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Grid, Heart, History, Settings, ShieldAlert, Search, List, Calendar, Link2 } from 'lucide-react';
+import { Home, Grid, Heart, History, Settings, ShieldAlert, Search, List, Calendar, Link2, X } from 'lucide-react';
 import { LocalStorageFavoriteRepository } from '../../lib/repositories/localStorage';
 
 interface SidebarProps {
   currentView: string;
-  onNavigate: (view: string) => void;
+  onNavigate: (hash: string) => void;
+  mobileMenuOpen?: boolean;
+  onClose?: () => void;
 }
 
-export default function Sidebar({ currentView, onNavigate }: SidebarProps) {
+export default function Sidebar({ currentView, onNavigate, mobileMenuOpen, onClose }: SidebarProps) {
   const [favCount, setFavCount] = useState(0);
   const favRepo = new LocalStorageFavoriteRepository();
 
@@ -41,8 +43,14 @@ export default function Sidebar({ currentView, onNavigate }: SidebarProps) {
 
   const isActive = (id: string) => currentView === id;
 
-  return (
-    <aside className="w-48 bg-carbon/50 border-r border-white/10 flex flex-col py-6 px-3 gap-1 shrink-0 overflow-y-auto">
+  const sidebarContent = (
+    <>
+      <div className="flex items-center justify-between px-3 mb-2 lg:hidden">
+        <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.3em] font-black">NAV</span>
+        <button onClick={onClose} className="p-1 text-white/40 hover:text-white cursor-pointer">
+          <X className="w-4 h-4" />
+        </button>
+      </div>
       {navItems.map((item) => (
         <button
           key={item.id}
@@ -62,6 +70,23 @@ export default function Sidebar({ currentView, onNavigate }: SidebarProps) {
           )}
         </button>
       ))}
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      <aside className="hidden lg:flex w-44 bg-carbon/50 border-r border-white/10 flex-col py-6 px-3 gap-1 shrink-0 overflow-y-auto">
+        {sidebarContent}
+      </aside>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+          <aside className="absolute left-0 top-0 bottom-0 w-56 bg-carbon/90 border-r border-white/10 flex flex-col py-4 px-3 gap-1 overflow-y-auto backdrop-blur-xl shadow-2xl">
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

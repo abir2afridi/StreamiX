@@ -66,7 +66,7 @@ export default function SearchView({ onNavigate }: SearchViewProps) {
   };
 
   return (
-    <div className="pt-8 space-y-6 pb-20 px-6 max-w-[1600px] mx-auto">
+    <div className="pt-8 space-y-6 pb-20 px-3 md:px-6 max-w-[1600px] mx-auto">
       <div className="flex items-center gap-3 bg-carbon/80 backdrop-blur-xl border border-white/10 p-4">
         <Search className="w-5 h-5 text-neon shrink-0" />
         <input

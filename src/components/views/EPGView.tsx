@@ -102,7 +102,7 @@ export default function EPGView({ onNavigate }: EPGViewProps) {
   }
 
   return (
-    <div className="pt-8 space-y-6 pb-20 px-6 max-w-[1600px] mx-auto">
+    <div className="pt-8 space-y-6 pb-20 px-3 md:px-6 max-w-[1600px] mx-auto">
       <div className="bg-carbon/80 backdrop-blur-xl border border-white/10 p-4 flex flex-col md:flex-row md:items-center gap-4">
         <div className="flex items-center gap-2 shrink-0">
           <Radio className="w-4 h-4 text-neon" />

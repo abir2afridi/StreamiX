@@ -102,7 +102,7 @@ export default function ChannelsView({ initialQuery = '', initialCategory = 'all
   };
 
   return (
-    <div className="flex-1 flex flex-col lg:flex-row pt-8 px-6 gap-6">
+    <div className="flex-1 flex flex-col lg:flex-row pt-8 px-3 md:px-6 gap-4 md:gap-6">
       <aside className="w-full lg:w-64 shrink-0 space-y-6 bg-carbon/80 backdrop-blur-xl border border-white/10 p-5 h-fit sticky top-0 self-start">
           <div className="flex items-center justify-between">
             <h3 className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">

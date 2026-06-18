@@ -12,7 +12,7 @@ import HistoryView from './components/views/HistoryView';
 import SettingsView from './components/views/SettingsView';
 import AdminView from './components/views/AdminView';
 import ValidateView from './components/views/ValidateView';
-import { Tv, Play, Monitor, ListCollapse, Radio, ChevronRight, Zap, Sun, Moon } from 'lucide-react';
+import { Tv, Play, Monitor, ListCollapse, Radio, ChevronRight, Zap, Sun, Moon, Menu, X } from 'lucide-react';
 import { Channel } from './types';
 import { ChannelService } from './lib/services/ChannelService';
 
@@ -24,6 +24,7 @@ export default function App() {
   });
   const [channels, setChannels] = useState<Channel[]>([]);
   const [focusedIndex, setFocusedIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const channelService = new ChannelService();
 
@@ -163,7 +164,7 @@ export default function App() {
   };
 
   return (
-    <div className={`h-screen overflow-hidden ${lightTheme ? 'light' : ''} bg-obsidian text-white flex flex-col font-sans antialiased selection:bg-neon/30 selection:text-white`}>
+    <div className={`h-dvh lg:h-screen overflow-x-hidden overflow-y-hidden ${lightTheme ? 'light' : ''} bg-obsidian text-white flex flex-col font-sans antialiased selection:bg-neon/30 selection:text-white`}>
       
       {tvMode ? (
         <div className="flex-1 flex flex-col bg-obsidian p-8 space-y-8 overflow-y-auto">
@@ -265,14 +266,18 @@ export default function App() {
             toggleTheme={toggleTheme}
             viewTitle={parsed.path === 'channels' && !parsed.id ? 'CHANNEL DIRECTORY' : parsed.id ? 'CHANNEL PLAYER' : parsed.path === 'validate' ? 'STREAM VALIDATOR' : parsed.path === 'search' ? 'SEARCH' : parsed.path === 'categories' ? 'BROWSE' : parsed.path === 'epg' ? 'TV GUIDE' : parsed.path.toUpperCase()}
             backTarget={parsed.path !== 'home' ? (parsed.id ? '#/' + parsed.path : '#/') : undefined}
+            mobileMenuOpen={mobileMenuOpen}
+            onMobileMenuToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
           />
           <div className="flex flex-1 overflow-hidden">
             <Sidebar
               currentView={parsed.path}
-              onNavigate={handleNavigate}
+              onNavigate={(hash) => { setMobileMenuOpen(false); handleNavigate(hash); }}
+              mobileMenuOpen={mobileMenuOpen}
+              onClose={() => setMobileMenuOpen(false)}
             />
-            <div className="flex-1 flex flex-col overflow-hidden">
-              <main className="flex-1 flex flex-col overflow-y-auto">
+            <div className="flex-1 flex flex-col overflow-hidden w-full max-w-full">
+              <main className="flex-1 flex flex-col overflow-y-auto min-h-0 w-full max-w-full touch-pan-y">
                 {renderActiveView()}
               </main>
           </div>

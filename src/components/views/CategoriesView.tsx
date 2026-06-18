@@ -36,7 +36,7 @@ export default function CategoriesView({ onNavigate }: CategoriesViewProps) {
   }
 
   return (
-    <div className="pt-8 space-y-12 pb-20 px-6 max-w-[1600px] mx-auto">
+    <div className="pt-8 space-y-12 pb-20 px-3 md:px-6 max-w-[1600px] mx-auto">
       <div className="space-y-4">
         <h3 className="text-[11px] font-black text-white/40 uppercase tracking-[0.2em] flex items-center gap-2">
           <Radio className="w-4 h-4 text-neon" /> CATEGORIES

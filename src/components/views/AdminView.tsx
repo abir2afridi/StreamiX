@@ -171,7 +171,7 @@ export default function AdminView() {
   }
 
   return (
-    <div className="pt-8 space-y-8 pb-16 px-6 max-w-6xl mx-auto">
+    <div className="pt-8 space-y-8 pb-16 px-3 md:px-6 max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4">
         <div>
           <h2 className="text-xl font-black font-display uppercase tracking-widest text-white flex items-center gap-2">

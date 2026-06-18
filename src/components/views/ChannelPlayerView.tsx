@@ -151,7 +151,7 @@ export default function ChannelPlayerView({ slug, onNavigate }: ChannelPlayerVie
   const upcomingPrograms = epgData.filter((p) => new Date(p.startTime) > new Date()).slice(0, 5);
 
   return (
-    <div className={`pt-3 space-y-6 pb-20 ${theaterMode ? 'px-0' : 'px-6'}`}>
+    <div className={`pt-3 space-y-6 pb-20 ${theaterMode ? 'px-0' : 'px-3 md:px-6'}`}>
       <VideoPlayer
         streams={channel.streams}
         channelName={channel.name}
